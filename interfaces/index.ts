@@ -4,7 +4,13 @@
 //
 // import { User } from 'path/to/interfaces';
 
+import React from "react";
+
 export type User = {
-  id: number
-  name: string
+	id: number;
+	name: string;
+};
+
+export interface Coin {
+	name?: string;
 }

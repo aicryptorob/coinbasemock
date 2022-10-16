@@ -1,15 +1,31 @@
-import Link from 'next/link'
-import Layout from '../components/Layout'
+import Link from "next/link";
 
-const IndexPage = () => (
-  <Layout title="Home | Next.js + TypeScript Example">
-    <h1>Hello Next.js 👋</h1>
-    <p>
-      <Link href="/about">
-        <a>About</a>
-      </Link>
-    </p>
-  </Layout>
-)
+import { Home } from "../components/Home";
 
-export default IndexPage
+// imports for react query
+import {
+	QueryClient,
+	QueryClientProvider,
+	useQuery,
+} from "@tanstack/react-query";
+
+// set-up client
+const queryClient = new QueryClient();
+
+const IndexPage = (): JSX.Element => (
+	<>
+		<QueryClientProvider client={queryClient}>
+			<Home />
+		</QueryClientProvider>
+	</>
+);
+
+export async function getStaticProps() {
+	return {
+		props: {
+			coins: [],
+		},
+	};
+}
+
+export default IndexPage;
